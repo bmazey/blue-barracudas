@@ -42,5 +42,11 @@ public class DemoController {
         TextEntity entity = demoService.createText(demoService.convertTextDtoToTextEntity(text));
         return ResponseEntity.ok(demoService.convertTextEntityToTextIdDto(entity));
     }
+    @RequestMapping(value = "/write", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<?> StringExample(TextDto text) {
+        TextEntity entity = demoService.createText(demoService.convertTextDtoToTextEntity(text));
+        return ResponseEntity.ok(demoService.convertTextEntityToTextIdDto(entity));
+    }
 
 }
