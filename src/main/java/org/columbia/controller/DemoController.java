@@ -26,7 +26,7 @@ public class DemoController {
     @RequestMapping(value = "/greeting", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<?> getGreeting() {
-        return new ResponseEntity<String>("hello!", HttpStatus.OK);
+        return new ResponseEntity<String>("SKYNET!", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/greeting/{id}", method = RequestMethod.GET)
@@ -42,10 +42,10 @@ public class DemoController {
         TextEntity entity = demoService.createText(demoService.convertTextDtoToTextEntity(text));
         return ResponseEntity.ok(demoService.convertTextEntityToTextIdDto(entity));
     }
-    @RequestMapping(value = "/write", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     @ResponseBody
-    public ResponseEntity<?> StringExample(TextDto text) {
-        TextEntity entity = demoService.createText(demoService.convertTextDtoToTextEntity(text));
+    public ResponseEntity<?> DelGreetingById(@PathVariable UUID id) {
+        TextEntity entity = demoService.getTextByID(id);
         return ResponseEntity.ok(demoService.convertTextEntityToTextIdDto(entity));
     }
 
