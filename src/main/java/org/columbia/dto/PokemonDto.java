@@ -17,6 +17,16 @@ public class PokemonDto {
 
     String[] type;
 
+    PokemonModelDto[] model;
+
+    public PokemonModelDto[] getModel() {
+        return model;
+    }
+
+    public void setModel(PokemonModelDto[] model) {
+        this.model = model;
+    }
+
     public String getFlatName() {
         return flatName;
     }
