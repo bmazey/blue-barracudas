@@ -1,5 +1,7 @@
 package org.columbia.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 public class PokemonSkillsDto {
 
     int[] egg;
@@ -7,6 +9,17 @@ public class PokemonSkillsDto {
     int[] tm;
     int[] transfer;
     int[] tutor;
+
+    @JsonAlias("pre-evolution")
+    int[] preevolution;
+
+    public int[] getPreevolution() {
+        return preevolution;
+    }
+
+    public void setPreevolution(int[] preevolution) {
+        this.preevolution = preevolution;
+    }
 
     public int[] getEgg() {
         return egg;
