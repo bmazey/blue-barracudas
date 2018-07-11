@@ -26,7 +26,7 @@ public class DemoController {
     @RequestMapping(value = "/greeting", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<?> getGreeting() {
-        return new ResponseEntity<String>("SKYNET!", HttpStatus.OK);
+        return new ResponseEntity<String>("hello!", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/greeting/{id}", method = RequestMethod.GET)
@@ -38,15 +38,23 @@ public class DemoController {
 
     @RequestMapping(value = "/greeting", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<?> postGreeting(TextDto text) {
-        TextEntity entity = demoService.createText(demoService.convertTextDtoToTextEntity(text));
+    public ResponseEntity<?> postGreeting(String text) {
+        TextEntity entity = demoService.createText(demoService.convertStringToTextEntity(text));
         return ResponseEntity.ok(demoService.convertTextEntityToTextIdDto(entity));
-    }
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+
+        }
+    
+
+    @RequestMapping(value = "/greeting/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseEntity<?> DelGreetingById(@PathVariable UUID id) {
-        TextEntity entity = demoService.getTextByID(id);
-        return ResponseEntity.ok(demoService.convertTextEntityToTextIdDto(entity));
+
+        if (!demoService.checkIfIdExists(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        demoService.deleteTextById(id);
+        return ResponseEntity.noContent().build();
     }
+
 
 }

@@ -29,6 +29,10 @@ public class DemoService {
         return repository.findById(id).get();
     }
 
+    public boolean checkIfIdExists(UUID id) {
+        return repository.findById(id).isPresent();
+    }
+
     public TextEntity createText(TextEntity text) {
         repository.save(text);
         return text;
@@ -38,10 +42,18 @@ public class DemoService {
         TextEntity entity = modelMapper.map(text, TextEntity.class);
         return entity;
     }
+    public TextEntity convertStringToTextEntity(String text){
+        TextEntity entity=modelMapper.map(text,TextEntity.class);
+        return entity;
+    }
 
     public TextIdDto convertTextEntityToTextIdDto(TextEntity entity) {
         TextIdDto dto = modelMapper.map(entity, TextIdDto.class);
         return dto;
+    }
+
+    public void deleteTextById(UUID id) {
+        repository.deleteById(id);
     }
 
 }

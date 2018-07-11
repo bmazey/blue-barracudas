@@ -9,6 +9,6 @@ public class TextDto {
     }
 
     public void setContent(String content) {
-        this.content = content;
+        this.content=content;
     }
 }
