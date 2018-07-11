@@ -1,5 +1,6 @@
 package org.columbia.controller;
 
+import org.columbia.dto.PokemonDto;
 import org.columbia.dto.TextDto;
 import org.columbia.entity.TextEntity;
 import org.columbia.service.DemoService;
@@ -8,9 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+import java.awt.Desktop;
 import java.util.UUID;
-
+import java.net.URI;
 
 @Controller
 @RequestMapping("api")
@@ -22,39 +23,14 @@ public class DemoController {
 
     @Autowired
     DemoService demoService;
-
-    @RequestMapping(value = "/greeting", method = RequestMethod.GET)
+    @RequestMapping(value = "/bulbasaur", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<?> getGreeting() {
-        return new ResponseEntity<String>("hello!", HttpStatus.OK);
-    }
 
-    @RequestMapping(value = "/greeting/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<?> getGreetingById(@PathVariable UUID id) {
-        TextEntity entity = demoService.getTextByID(id);
-        return ResponseEntity.ok(demoService.convertTextEntityToTextIdDto(entity));
-    }
-
-    @RequestMapping(value = "/greeting", method = RequestMethod.POST)
-    @ResponseBody
-    public ResponseEntity<?> postGreeting(String text) {
-        TextEntity entity = demoService.createText(demoService.convertStringToTextEntity(text));
-        return ResponseEntity.ok(demoService.convertTextEntityToTextIdDto(entity));
-
-        }
-    
-
-    @RequestMapping(value = "/greeting/{id}", method = RequestMethod.DELETE)
-    @ResponseBody
-    public ResponseEntity<?> DelGreetingById(@PathVariable UUID id) {
-
-        if (!demoService.checkIfIdExists(id)) {
-            return ResponseEntity.notFound().build();
-        }
-        demoService.deleteTextById(id);
-        return ResponseEntity.noContent().build();
-    }
+   public ResponseEntity<?>getGreeting(){return new ResponseEntity<>("",HttpStatus.OK);}
 
 
-}
+
+  }
+
+
+
