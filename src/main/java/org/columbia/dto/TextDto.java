@@ -2,13 +2,15 @@ package org.columbia.dto;
 
 public class TextDto {
 
-    private String content;
+    private String pokemon;
 
-    public String getContent() {
-        return content;
+    public String getPokemon() {
+        return pokemon;
     }
 
-    public void setContent(String content) {
-        this.content=content;
+    public void setPokemon(String pokemon) {
+        this.pokemon = pokemon;
     }
+
+
 }

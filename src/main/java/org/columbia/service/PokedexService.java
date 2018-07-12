@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -31,6 +32,26 @@ public class PokedexService {
         ObjectMapper mapper = new ObjectMapper();
         PokemonDto[] pokemon = mapper.readValue(resourceInputStream, PokemonDto[].class);
         return pokemon;
+    }
+
+    public Optional<PokemonDto> findPokemon(PokemonDto[] pokemon, String s) {
+        for (PokemonDto poke : pokemon) {
+            if (poke.getEname().equals(s)) {
+//                PokemonDto returnPoke = new PokemonDto();
+//                returnPoke.setBase(poke.getBase());
+//                returnPoke.setCname(poke.getCname());
+//                returnPoke.setEname(poke.getEname());
+//                returnPoke.setFlatName(poke.getFlatName());
+//                returnPoke.setId(poke.getId());
+//                returnPoke.setJname(poke.getJname());
+//                returnPoke.setModel(poke.getModel());
+//                returnPoke.setSkills(poke.getSkills());
+//                returnPoke.setType(poke.getType());
+                return Optional.of(poke);
+            }
+        }
+
+        return Optional.empty();
     }
 
 }
