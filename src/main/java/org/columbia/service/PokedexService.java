@@ -1,21 +1,15 @@
 package org.columbia.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.columbia.dto.PokedexDto;
 import org.columbia.dto.PokemonDto;
-import org.columbia.dto.TextDto;
-import org.columbia.entity.TextEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class PokedexService {
