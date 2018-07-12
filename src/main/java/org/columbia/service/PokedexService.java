@@ -22,9 +22,6 @@ public class PokedexService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Autowired
-    private DemoJpaRepository repository;
-
     public PokemonDto[] marshallPokedex() throws Exception {
 
         Resource resource = new ClassPathResource("pokemon.json");
